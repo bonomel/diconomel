@@ -8,8 +8,8 @@ namespace Diconomel.Startup
     {
         static void Main(string[] args)
         {
-            var service = new PrintService();
-            var consumer = new ServiceConsumer(service);
+            var service = (PrintService)Activator.CreateInstance(typeof(PrintService));
+            var consumer = (ServiceConsumer)Activator.CreateInstance(typeof(ServiceConsumer), service);
 
             consumer.Print();
 
