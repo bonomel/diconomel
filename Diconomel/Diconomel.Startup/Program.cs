@@ -10,14 +10,16 @@ namespace Diconomel.Startup
         static void Main(string[] args)
         {
             var container = new DependencyContainer();
-            container.AddDependency(typeof(PrintingService));
+
+            container.AddDependency<PrintingService>();
+            container.AddDependency<MessageService>();
             container.AddDependency<ServiceConsumer>();
 
             var resolver = new DependencyResolver(container);
 
             var consumer = resolver.GetService<ServiceConsumer>();
             
-            consumer.Print();
+            consumer.PrintMessage();
 
             Console.ReadLine();
         }

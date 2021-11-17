@@ -15,7 +15,12 @@ namespace Diconomel.Core
 
         public T GetService<T>()
         {
-            Type dependency = container.GetDependency(typeof(T));
+            return (T)GetService(typeof(T));
+        }
+
+        public object GetService(Type type)
+        {
+            Type dependency = container.GetDependency(type);
             ConstructorInfo constructor = dependency.GetConstructors().Single(); // only one constructor is allowed for services
             ParameterInfo[] parameters = constructor.GetParameters();
 
@@ -23,15 +28,19 @@ namespace Diconomel.Core
 
             if (parameters.Length > 0)
             {
+                // parameters exist on the constructor
                 for (int i = 0; i < parameters.Length; i++)
                 {
-                    parameterImplementations[i] = Activator.CreateInstance(parameters[i].ParameterType);
+                    // recursively get each dependency and each of their dependencies
+                    parameterImplementations[i] = GetService(parameters[i].ParameterType);
                 }
 
-                return (T)Activator.CreateInstance(dependency, parameterImplementations);
+                // return object using instantiated objects in its constructor
+                return Activator.CreateInstance(dependency, parameterImplementations);
             }
 
-            return (T) Activator.CreateInstance(dependency);
+            // return object using parameterless contructor
+            return Activator.CreateInstance(dependency);
         }
     }
 }

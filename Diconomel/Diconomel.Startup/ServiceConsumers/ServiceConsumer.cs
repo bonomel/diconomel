@@ -11,7 +11,7 @@ namespace Diconomel.Startup.ServiceConsumers
             this.printService = printService;
         }
 
-        public void Print()
+        public void PrintMessage()
         {
             printService.Print();
         }
