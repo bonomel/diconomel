@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diconomel.Runtime", "Diconomel.Console\Diconomel.Runtime.csproj", "{093723FE-81FB-4D9F-8A10-C3B07335FB6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diconomel.Core", "Diconomel.Core\Diconomel.Core.csproj", "{B0162177-E91B-4E35-87F6-568638E573AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diconomel.Startup", "Diconomel.Startup\Diconomel.Startup.csproj", "{18578708-62AD-4B04-94E5-D9990C8012F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{093723FE-81FB-4D9F-8A10-C3B07335FB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{093723FE-81FB-4D9F-8A10-C3B07335FB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{093723FE-81FB-4D9F-8A10-C3B07335FB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{093723FE-81FB-4D9F-8A10-C3B07335FB6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0162177-E91B-4E35-87F6-568638E573AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0162177-E91B-4E35-87F6-568638E573AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0162177-E91B-4E35-87F6-568638E573AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0162177-E91B-4E35-87F6-568638E573AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18578708-62AD-4B04-94E5-D9990C8012F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18578708-62AD-4B04-94E5-D9990C8012F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18578708-62AD-4B04-94E5-D9990C8012F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18578708-62AD-4B04-94E5-D9990C8012F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
