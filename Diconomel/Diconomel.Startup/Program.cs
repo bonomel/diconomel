@@ -1,4 +1,5 @@
-﻿using Diconomel.Startup.ServiceConsumers;
+﻿using Diconomel.Core;
+using Diconomel.Startup.ServiceConsumers;
 using Diconomel.Startup.Services;
 using System;
 
@@ -8,9 +9,14 @@ namespace Diconomel.Startup
     {
         static void Main(string[] args)
         {
-            var service = (PrintService)Activator.CreateInstance(typeof(PrintService));
-            var consumer = (ServiceConsumer)Activator.CreateInstance(typeof(ServiceConsumer), service);
+            var container = new DependencyContainer();
+            container.AddDependency(typeof(PrintingService));
+            container.AddDependency<ServiceConsumer>();
 
+            var resolver = new DependencyResolver(container);
+
+            var consumer = resolver.GetService<ServiceConsumer>();
+            
             consumer.Print();
 
             Console.ReadLine();

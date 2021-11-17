@@ -4,9 +4,9 @@ namespace Diconomel.Startup.ServiceConsumers
 {
     public class ServiceConsumer
     {
-        private readonly PrintService printService;
+        private readonly PrintingService printService;
 
-        public ServiceConsumer(PrintService printService) 
+        public ServiceConsumer(PrintingService printService) 
         {
             this.printService = printService;
         }

@@ -2,7 +2,7 @@
 
 namespace Diconomel.Startup.Services
 {
-    public class PrintService
+    public class PrintingService
     {
         internal void Print()
         {
