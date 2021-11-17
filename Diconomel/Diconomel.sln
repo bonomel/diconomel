@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diconomel.Console", "Diconomel.Console\Diconomel.Console.csproj", "{093723FE-81FB-4D9F-8A10-C3B07335FB6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diconomel.Runtime", "Diconomel.Console\Diconomel.Runtime.csproj", "{093723FE-81FB-4D9F-8A10-C3B07335FB6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Diconomel.Console
+namespace Disconomel.Runtime
 {
     class Program
     {
