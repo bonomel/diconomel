@@ -1,9 +1,9 @@
-﻿using Diconomel.Core;
+﻿using System;
 using Diconomel.Startup.ServiceConsumers;
 using Diconomel.Startup.Services;
-using System;
+using Squeezy.Core;
 
-namespace Diconomel.Startup
+namespace TestApplication.Startup
 {
     public class Program
     {

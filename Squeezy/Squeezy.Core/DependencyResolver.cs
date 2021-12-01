@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Diconomel.Core
+namespace Squeezy.Core
 {
     public class DependencyResolver
     {

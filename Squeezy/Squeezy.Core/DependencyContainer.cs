@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Diconomel.Core
+namespace Squeezy.Core
 {
     public class DependencyContainer
     {
