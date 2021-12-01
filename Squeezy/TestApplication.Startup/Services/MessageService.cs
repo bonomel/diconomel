@@ -1,10 +1,19 @@
-﻿namespace Diconomel.Startup.Services
+﻿using System;
+
+namespace TestApplication.Startup.Services
 {
     public class MessageService
     {
-        public static string Message()
+        private readonly int _random;
+
+        public MessageService()
         {
-            return $"{ nameof(MessageService) } sends its regards!";
+            _random = new Random().Next();
+        }
+
+        public string Message()
+        {
+            return $"{ nameof(MessageService) } sends its { _random } regards!";
         }
     }
 }

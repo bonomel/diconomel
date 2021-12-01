@@ -6,21 +6,21 @@ namespace Squeezy.Core
 {
     public class DependencyContainer
     {
-        private readonly List<Type> dependencies = new();
+        private readonly List<Dependency> _dependencies = new();
 
-        public void AddDependency(Type type)
+        public void AddSingleton<T>()
         {
-            dependencies.Add(type);
+            _dependencies.Add(new Dependency(typeof(T), LifetimeScope.Singleton));
         }
 
-        public void AddDependency<T>()
+        public void AddTransient<T>()
         {
-            dependencies.Add(typeof(T));
+            _dependencies.Add(new Dependency(typeof(T), LifetimeScope.Transient));
         }
 
-        public Type GetDependency(Type type)
+        public Dependency GetDependency(Type type)
         {
-            return dependencies.First(t => t.Name == type.Name);
+            return _dependencies.First(t => t.Type.Name == type.Name);
         }
     }
 }

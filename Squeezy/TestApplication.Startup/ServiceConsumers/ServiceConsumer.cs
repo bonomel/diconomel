@@ -1,4 +1,4 @@
-﻿using Diconomel.Startup.Services;
+﻿using TestApplication.Startup.Services;
 
 namespace Diconomel.Startup.ServiceConsumers
 {

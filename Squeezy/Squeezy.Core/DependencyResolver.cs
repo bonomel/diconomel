@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Squeezy.Core
 {
     public class DependencyResolver
     {
-        private readonly DependencyContainer container;
+        private readonly DependencyContainer _container;
 
         public DependencyResolver(DependencyContainer container)
         {
-            this.container = container;
+            this._container = container;
         }
 
         public T GetService<T>()
@@ -20,15 +21,14 @@ namespace Squeezy.Core
 
         public object GetService(Type type)
         {
-            Type dependency = container.GetDependency(type);
-            ConstructorInfo constructor = dependency.GetConstructors().Single(); // only one constructor is allowed for services
+            Dependency dependency = _container.GetDependency(type);
+            ConstructorInfo constructor = dependency.Type.GetConstructors().Single(); // only one constructor is allowed for services
             ParameterInfo[] parameters = constructor.GetParameters();
 
             var parameterImplementations = new object[parameters.Length];
 
             if (parameters.Length > 0)
             {
-                // parameters exist on the constructor
                 for (int i = 0; i < parameters.Length; i++)
                 {
                     // recursively get each dependency and each of their dependencies
@@ -36,11 +36,30 @@ namespace Squeezy.Core
                 }
 
                 // return object using instantiated objects in its constructor
-                return Activator.CreateInstance(dependency, parameterImplementations);
+                return Activator.CreateInstance(dependency.Type, parameterImplementations);
             }
 
-            // return object using parameterless contructor
-            return Activator.CreateInstance(dependency);
+            return CreateImplementation(dependency, t => Activator.CreateInstance(t, parameterImplementations));
+        }
+
+        public object CreateImplementation(Dependency dependency, Func<Type, object> factory)
+        {
+            // if the dependency has already been implemented, return it
+            if (dependency.IsImplemented)
+            {
+                return dependency.Implementation;
+            }
+
+            // otherwise, create it
+            var implementation = factory(dependency.Type);
+
+            // and store it inside the dependency if it is a singleton
+            if (dependency.LifetimeScope == LifetimeScope.Singleton)
+            {
+                dependency.AddImplementation(implementation);
+            }
+
+            return implementation;
         }
     }
 }

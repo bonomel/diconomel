@@ -1,7 +1,7 @@
 ﻿using System;
 using Diconomel.Startup.ServiceConsumers;
-using Diconomel.Startup.Services;
 using Squeezy.Core;
+using TestApplication.Startup.Services;
 
 namespace TestApplication.Startup
 {
@@ -11,15 +11,20 @@ namespace TestApplication.Startup
         {
             var container = new DependencyContainer();
 
-            container.AddDependency<PrintingService>();
-            container.AddDependency<MessageService>();
-            container.AddDependency<ServiceConsumer>();
+            container.AddTransient<PrintingService>();
+            container.AddSingleton<MessageService>();
+            container.AddSingleton<ServiceConsumer>();
 
             var resolver = new DependencyResolver(container);
 
-            var consumer = resolver.GetService<ServiceConsumer>();
-            
-            consumer.PrintMessage();
+            var consumerOne = resolver.GetService<ServiceConsumer>();
+            consumerOne.PrintMessage();
+
+            var consumerTwo = resolver.GetService<ServiceConsumer>();
+            consumerTwo.PrintMessage();
+
+            var consumerThree = resolver.GetService<ServiceConsumer>();
+            consumerThree.PrintMessage();
 
             Console.ReadLine();
         }
